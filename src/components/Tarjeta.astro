@@ -1,0 +1,71 @@
+---
+interface Props {
+    title: string;
+    author: string;
+    imageUrl: string;
+    audioURL: string;
+}
+const {title, author, imageUrl,audioURL} = Astro.props;
+---
+
+<div class="product-card">
+    <h2 class="product-title">{title}</h2>
+    <img src={imageUrl} alt="Product Title" class="product-image" />
+    <h2 class="artista">{author}</h2>
+    <audio src={audioURL} controls></audio>
+</div>
+
+
+			<!-- <Tarjeta title='NuevaYol' artista='Badbunny' imageUrl='/albun 2025.webp'></Tarjeta>
+			<Tarjeta title='VOY A LLeVARTE PA PR' artista='Badbunny' imageUrl='/albun 2025.webp'></Tarjeta>
+			<Tarjeta title='Perro Negro' artista='Badbunny' imageUrl='/segunda.jpg'></Tarjeta> -->
+<style>
+
+
+
+    .product-card {
+        background: #23272f;
+        color: #f3f3f3;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding: 24px 32px;
+        margin-bottom: 24px;
+        width: 100%;
+        max-width: 700px;
+        transition: box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+        box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    }
+
+    .product-image {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 12px;
+        background: #181a20;
+        border: 2px solid #353945;
+    }
+
+    .product-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        color: #f3f3f3;
+    }
+
+    .artista {
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: #b0b3b8;
+        margin: 0;
+    }
+
+    body {
+        background: #181a20;
+    }
+</style>
