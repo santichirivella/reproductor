@@ -1,165 +1,65 @@
 ---
-
-import Playlist from '../components/Playlist.astro';
-import Tarjeta from '../components/Tarjeta.astro';
-import Layout from '../layouts/Layout.astro';
+import Playlist from "../components/Playlist.astro";
+import Tarjeta from "../components/Tarjeta.jsx";
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
-const api = await  fetch("https://api.institutoalfa.org/api/songs")
-const {songs} = await api.json()
-
-
+const api = await fetch("https://api.institutoalfa.org/api/songs");
+const { songs } = await api.json();
 ---
 
 <Layout>
-	 <div><!--  playlist  e info -->
-		<div>
+	<div class="container">
+		<!-- <div>
 			<h1>tu biblioteca</h1>
-
-			<Playlist	
-				titulo='playlist'
-				imageUrl='/albun 2025.webp'
-			></Playlist>
-
-			<Playlist	
-				titulo='playlist'
-				imageUrl='/albun 2025.webp'
-			></Playlist>
-
-			<Playlist	
-				titulo='playlist'
-				imageUrl='/albun 2025.webp'
-			></Playlist>
-			
-			
-			
-			
-			
-			
-		</div>
-
-		<div><!-- frame central -->
-			<div>	<!-- barra principal -->
+	
+			<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
+	
+			<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
+	
+			<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
+		</div> -->
+	
+		<div>
+			<div>
 				<div>
-					<!-- icono random -->
-					<!-- icono anterior cancion -->
-					<div><!--icono reproducir -->
-						<!-- icono play -->
-						<div style="width:50px; height:50px; background:#d9d9d9; border-radius:50%;"></div>
-					</div>
-					<!-- icono siguiente cancion -->
-					<!-- icono repetir -->
-				</div>
-				<div
-					style="
-						width:552px;
-						height:0;
-						border-radius:8px;
-						border-top:8px solid #a6a6a6;
-						margin:0 auto;
-						display:block;
-					"
-				></div>
-			</div>		
-
-
-
-
-
-
-			<div><!-- pagina de info del artista y canciones -->
-				<div><!-- artista y canciones -->
-					<div><!-- mas canciones -->
-						<div><!--frame 10 -->
-							<div><!--frame ns -->
-								<div><!-- frame bara -->
-									<p>01</p>
-									<!-- iconoplay -->
-									<div style="width:27px; height:27px; background:#c4c4c4; border-radius:50%;"></div>
-									<div><!-- tarjeta -->
-										{
-											songs.map((song) => (
-												<Tarjeta 
-													title={song.title} 
-													author={song.author} 
-													imageUrl={song.imageUrl}
-													audioURL={song.audio.url}
-												/>
-											))
-										}
-									</div>
-								</div>
-								<!-- iconsettings -->
-							</div>
-						</div>
-					</div><!-- mas canciones -->
-				</div>
-
-				<p>mas canciones</p>
-				 <div><!--mas opciones -->
-					<div style="width:75px; height:75px; background:#d9d9d9; border-radius:50%;"></div>
-						<div> </div> <!--foto del almub -->
-						<!-- icono random -->
-				</div>
-				 <div><!--artista verificado -->
 					<p>artista verificado</p>
-					<!-- Icono verificado -->
+					<Icon name="fe:check-verified" />
 				</div>
 				<h1>nombre del artista</h1>
-				<div></div><!-- fondo -->
 			</div>
-
-			 <div> <!--info de la cancion actual -->
-				<div><!--  derecho con informacion de la cancion actual -->
-					<div><!--  frame 8 -->
-						<p>cancion</p>
-						<div><!-- agregar a playlist -->
-							<!-- icono de agregar a playlist -->
-						</div>
-						<p>creador</p>
-					</div>
-
-					<div><!-- acerca del artista -->
-						<p>informacion</p>
-						<p>artista</p>
-					</div>
-					<div> <!-- foto del artista -->
-						<p>acerca de artista</p>
-					</div>
-					<!-- foto de la cancion -->
-				
-				</div>
-
-
-
-				
-
-
-
-				
-
-
-
-
-			
-
-
-
+	
+			<div>
+				<!-- tarjeta -->
+				{
+					songs.map((song) => (
+						<Tarjeta
+							client:visible
+							title={song.title}
+							author={song.author}
+							album={song.album}
+							imageUrl={song.image.url}
+							audioURL={song.audio.url}
+						/>
+					))
+				}
 			</div>
+	
+		</div>
+	
+		<div>
+			<!-- Aquí adentro va la barra de la derecha -->
 		</div>
 
-		
-	
-	
-	
-	</div> 
-
 	</div>
-	<div></div>
-	<div></div>
-
-
-
-
 </Layout>
+
+<style>
+.container {
+	display: flex;
+	justify-content: space-between;
+	gap: 24px;
+}
+</style>

@@ -9,6 +9,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.8.1"
+    "@astrojs/react": "^4.3.0",
+    "@iconify-json/fe": "^1.2.2",
+    "@iconify-json/gg": "^1.2.2",
+    "@iconify-json/iconoir": "^1.2.7",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
+    "astro": "^5.8.1",
+    "astro-icon": "^1.1.5",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   }
 }
