@@ -1,28 +1,3 @@
----
-interface Props {
-    title: string;
-    author: string;
-    imageUrl: string;
-    audioURL: string;
-    album: string;
-}
-const {title, author, imageUrl,, album} = Astro.props;
----
-
-<div class="product-card">
-    <h2 class="product-title">{title}</h2>
-    <img src={imageUrl} alt="Product Title" class="product-image" />
-    <h2 class="artista">{author}</h2>
-    
-    <p class="album">Álbum: {album}</p>
-</div>
-
-
-			<!-- <Tarjeta title='NuevaYol' artista='Badbunny' imageUrl='/albun 2025.webp'></Tarjeta>
-			<Tarjeta title='VOY A LLeVARTE PA PR' artista='Badbunny' imageUrl='/albun 2025.webp'></Tarjeta>
-			<Tarjeta title='Perro Negro' artista='Badbunny' imageUrl='/segunda.jpg'></Tarjeta> -->
-<style>
-
 
 
     .product-card {
@@ -70,4 +45,3 @@ const {title, author, imageUrl,, album} = Astro.props;
     body {
         background: #181a20;
     }
-</style>

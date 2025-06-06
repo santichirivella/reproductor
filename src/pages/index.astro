@@ -1,5 +1,6 @@
 ---
 import Playlist from "../components/Playlist.astro";
+import Songbar from "../components/Songbar";
 import Tarjeta from "../components/Tarjeta.jsx";
 import Layout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
@@ -54,6 +55,8 @@ const { songs } = await api.json();
 		</div>
 
 	</div>
+
+	<Songbar client:visible />
 </Layout>
 
 <style>
