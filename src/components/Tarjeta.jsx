@@ -34,3 +34,12 @@ export default function Tarjeta({
 
         )
     }
+<div>
+      <h2>Mi Reproductor de Música</h2>
+      <button onClick={handlePlayPause} style={{ fontSize: '2em', cursor: 'pointer' }}>
+        {isPlaying ? <FaPause /> : <FaPlay />}
+      </button>
+      <p>{isPlaying ? 'Reproduciendo...' : 'Pausado'}</p>
+    </div>
+  );
+}
