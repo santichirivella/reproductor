@@ -1,4 +1,5 @@
 import { $cancionActual } from "../store"
+import { $pausar } from "../store"
 
 
 export default function Tarjeta({
@@ -9,7 +10,7 @@ export default function Tarjeta({
     const handleClick = () => {
         $cancionActual.set({
             title,
-            author, 
+            author,
             imageUrl,
             audioURL,
             album,
@@ -17,22 +18,20 @@ export default function Tarjeta({
     }
 
     const handlerClick = () => {
-        $cancionActual.set(null)
+        $pausar.set(true)
     }
-           
-        return (
-           <div className="song">
-            <img src={imageUrl} alt="Product Title" class="product-image" />
+
+    return (
+        <div className="song">
+            <img src={imageUrl} alt="Product Title" className="product-image" />
             <div>
                 <h3>{title}</h3>
                 <p>{author}</p>
             </div>
-            <button onClick={handleClick}>play</button>
-            <button onClick={handlerClick}>pause</button>
-            </div>
+            <button onClick={handleClick}>Play</button>
+            <button onClick={() => { audioURL.set(false); }}>Pause</button>
+        </div>
+    )
+}
 
 
-        )
-    }
-     
-  

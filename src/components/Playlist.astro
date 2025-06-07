@@ -11,4 +11,12 @@ const {titulo, imageUrl} = Astro.props;
 			<div>
 				<p class="product-title">{titulo}</p>
 				<img src={imageUrl} alt="Product Title" class="product-image" />
+				
 			</div>
+			<style>
+				.product-image {
+					width: 24px;
+					height: 24px;
+					object-fit: cover;
+				}
+			</style>
