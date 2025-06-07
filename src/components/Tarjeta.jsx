@@ -13,27 +13,26 @@ export default function Tarjeta({
             imageUrl,
             audioURL,
             album,
-
         })
-
     }
 
-
-
-
+    const handlerClick = () => {
+        $cancionActual.set(null)
+    }
+           
         return (
-            <div class="product-card">
-                <h2 class="product-title">{title}</h2>
-                <img src={imageUrl} alt="Product Title" class="product-image" />
-                <h2 class="artista">{author}</h2>
-
-                <p class="album">Álbum: {album}</p>
-                <button onClick={handleClick}>play</button>
+           <div className="song">
+            <img src={imageUrl} alt="Product Title" class="product-image" />
+            <div>
+                <h3>{title}</h3>
+                <p>{author}</p>
+            </div>
+            <button onClick={handleClick}>play</button>
+            <button onClick={handlerClick}>pause</button>
             </div>
 
 
         )
     }
-
      
   

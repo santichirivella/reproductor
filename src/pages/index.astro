@@ -4,7 +4,7 @@ import Songbar from "../components/Songbar";
 import Tarjeta from "../components/Tarjeta.jsx";
 import Layout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
-
+import Derecho from "../components/Derecho.jsx.jsx.jsx.jsx.jsx";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 const api = await fetch("https://api.institutoalfa.org/api/songs");
@@ -13,7 +13,7 @@ const { songs } = await api.json();
 
 <Layout>
 	<div class="container">
-		 <div>
+		 <div> class "playlists">
 			<h1>tu biblioteca</h1>
 	
 			<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
@@ -49,14 +49,16 @@ const { songs } = await api.json();
 			</div>
 	
 		</div>
-	
+		<Derecho client:visible/>
 		<div>
-			<!-- Aquí adentro va la barra de la derecha -->
+	
+
 		</div>
 
 	</div>
 
 	<Songbar client:visible />
+	
 </Layout>
 
 <style>
@@ -66,3 +68,4 @@ const { songs } = await api.json();
 	gap: 24px;
 }
 </style>
+
