@@ -6,6 +6,9 @@ import Layout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 import Derecho from "../components/Derecho.jsx";
 import Centra from "../components/Centra.jsx";
+import { Artists }  from "../data/Artists.jsx"
+
+
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -76,21 +79,24 @@ const { songs } = await api.json();
 
 <style>
 	.playlists {
+		background: #2b2b2b;
+		color: #2b2b2b;
+	
 		width: 340px;
 		min-width: 400px;
 		max-width: 500px;
 		height: 1000px;
-		background: rgba(24, 24, 24, 0.95);
+		background: #fff
 		border-radius: 16px;
-		box-shadow: 0 4px 24px rgba(150, 44, 44, 0.2);
+		
 		padding: 24px 16px;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: self-start;
 		position: sticky;
 		top: 24px;
 		height: fit-content;
-		color: #fff;
+		color: #fff
 		overflow-y: auto;
 		min-height: 1200px;
 	}
@@ -98,11 +104,12 @@ const { songs } = await api.json();
 
 <style>
 .partDerecha {
+	background: #2b2b2b;
 	width: 340px;
 	min-width: 400px;
 	max-width: 500px;
 	height: 1000px;
-	background: rgba(24, 24, 24, 0.95);
+	background: #c4c4c4
 	border-radius: 16px;
 	box-shadow: 0 4px 24px rgba(150, 44, 44, 0.2);
 	padding: 24px 16px;
@@ -112,7 +119,7 @@ const { songs } = await api.json();
 	position: sticky;
 	top: 24px;
 	height: fit-content;
-	color: #fff;
+	color: # 000
 	overflow-y: auto;
 	min-height: 1200px;
 }

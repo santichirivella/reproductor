@@ -1,0 +1,26 @@
+/* ... (Estilos anteriores para .right-sidebar-details y .song-cover-section) ... */
+
+.artist-info-details {
+  background-color: #202020; /* Fondo oscuro para la sección de info del artista */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.artist-info-details h3 {
+  font-size: 1em;
+  color: #b3b3b3; /* Color gris claro para el subtítulo "acerca del artista" */
+  margin: 0 0 10px 0;
+}
+
+.artist-info-details .artist-name-details {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: white; /* Color blanco para el nombre del artista */
+  margin: 0 0 15px 0;
+}
+
+.artist-info-details .artist-bio-text {
+  font-size: 0.9em;
+  color: #b3b3b3; /* Color gris claro para la biografía */
+  line-height: 1.6; /* Espaciado de línea para mejor legibilidad */
+}
