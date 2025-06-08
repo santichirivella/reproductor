@@ -13,6 +13,7 @@
     "@iconify-json/fe": "^1.2.2",
     "@iconify-json/gg": "^1.2.2",
     "@iconify-json/iconoir": "^1.2.7",
+    "@nanostores/react": "^1.0.0",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.6",
     "astro": "^5.8.1",

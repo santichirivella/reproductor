@@ -1,23 +1,50 @@
-// src/components/FavoriteButton.jsx
+
 import React, { useState, useEffect } from 'react';
 
-const Favorito = ({ songId }) => {
+const FavoriteButton = ({ songId }) => { 
   const [isFavorite, setIsFavorite] = useState(false);
 
-  // --- LÓGICA PARA localStorage IRÁ AQUÍ MÁS ADELANTE ---
-  // Por ahora, solo simula el estado
+  
   useEffect(() => {
-    // Aquí podrías simular que algunas canciones son favoritas
-    // para probar la visualización
-    if (songId === 'goodbyes-post-malone' || songId === 'blinding-lights-the-weeknd') {
-        setIsFavorite(true);
+    try {
+      const favorites = JSON.parse(localStorage.getItem('my_music_favorites') || '[]');
+      
+      setIsFavorite(favorites.includes(songId));
+    } catch (error) {
+      console.error("Error al leer favoritos de localStorage:", error);
+     
     }
-  }, [songId]); // Vuelve a verificar si cambia la canción
+  }, [songId]); 
 
+  
   const handleClick = () => {
-    // Por ahora, solo alternamos el estado visual
-    setIsFavorite(!isFavorite);
-    console.log(`Botón clicado para canción: ${songId}. Es favorito: ${!isFavorite}`);
+    let favorites = [];
+    try {
+     
+      favorites = JSON.parse(localStorage.getItem('my_music_favorites') || '[]');
+    } catch (error) {
+      console.error("Error al parsear favoritos de localStorage:", error);
+      favorites = []; 
+    }
+
+    if (isFavorite) {
+     
+      favorites = favorites.filter(id => id !== songId);
+    } else {
+      
+      if (!favorites.includes(songId)) {
+        favorites.push(songId);
+      }
+    }
+
+    try {
+   
+      localStorage.setItem('my_music_favorites', JSON.stringify(favorites));
+     
+      setIsFavorite(!isFavorite);
+    } catch (error) {
+      console.error("Error al guardar favoritos en localStorage:", error);
+    }
   };
 
   return (
@@ -29,13 +56,13 @@ const Favorito = ({ songId }) => {
         border: 'none',
         cursor: 'pointer',
         fontSize: '1.5em',
-        color: isFavorite ? 'red' : 'gray', // Estilo básico
-        marginLeft: '10px' // Para separarlo un poco del texto
+        color: isFavorite ? 'red' : 'gray', 
+        marginLeft: '10px' 
       }}
     >
-      {isFavorite ? '❤️' : '♡'}
+      {isFavorite ? '❤️' : '♡'} {}
     </button>
   );
 };
 
-export default Favorito;
+export default FavoriteButton; 

@@ -4,20 +4,13 @@ import Songbar from "../components/Songbar";
 import Tarjeta from "../components/Tarjeta.jsx";
 import Layout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
-import Derecho from "../components/Derecho.jsx";
+import SongList from '../components/Songlist.jsx'
+import { $showingFavorites } from '../store.js';
+import FavoritesToggleButton from '../components/FavoritesToggleButton.jsx';
 
-
-
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 const api = await fetch("https://api.institutoalfa.org/api/songs");
-const { songs } = await api.json();
+const   {songs}  = await api.json();
 ---
-
-
-
-
 
 <Layout>
 	<div class="container">
@@ -30,6 +23,9 @@ const { songs } = await api.json();
 				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
 				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
 				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
+				<FavoritesToggleButton client:visible />
+				
+
 			</div>
 		</div>
 		<div>
@@ -43,7 +39,7 @@ const { songs } = await api.json();
 
 			<div class="canciones">
 				<!-- tarjeta -->
-				{
+				<!-- {
 					songs.map((song) => (
 						<Tarjeta
 							client:visible
@@ -52,9 +48,14 @@ const { songs } = await api.json();
 							album={song.album}
 							imageUrl={song.image.url}
 							audioURL={song.audio.url}
+							_id={song._id}
 						/>
 					))
-				}
+				} -->
+					<SongList
+						client:visible
+						allSongs={songs}
+					/>
 			</div>
 		</div>
 		<div class="partDerecha">

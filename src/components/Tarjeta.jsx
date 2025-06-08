@@ -1,12 +1,12 @@
 
 import { $cancionActual } from "../store"
 import "./Tarjeta.css"
-import Favorito from "../componets/Favoritos.jsx"
+import Favorito from "../components/Favoritos.jsx"
 
 
 
     export default function Tarjeta({
-        title, author, imageUrl, audioURL, album
+        title, author, imageUrl, audioURL, album, _id
 
     }) {
 
@@ -17,19 +17,19 @@ import Favorito from "../componets/Favoritos.jsx"
                 imageUrl,
                 album,
                 audioURL,
-                id,
+                _id,
             })
         }
 
-        // const handlerClick = () => {
-        // if (audioRef.current) {
-        //     if (audioRef.current.paused) {
-        //         audioRef.current.play()
-        //     } else {
-        //         audioRef.current.pause()
-        //     }
-        // }
-    // }
+         const handlerClick = () => {
+         if (audioRef.current) {
+             if (audioRef.current.paused) {
+                 audioRef.current.play()
+             } else {
+                 audioRef.current.pause()
+             }
+         }
+     }
         return (
             <div className="Tarjeta">
                 <img src={imageUrl} alt="Product Title" className="product-image" />
@@ -37,7 +37,7 @@ import Favorito from "../componets/Favoritos.jsx"
                     <h3>{title}</h3>
                     <p>{author}</p>
                 </div>
-                <Favorito songId = {id} />
+                <Favorito songId = {_id} />
                 <button onClick={handleClick}>Play</button>
                 
             </div>
