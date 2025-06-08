@@ -1,6 +1,6 @@
 import React from 'react';
 import { $cancionActual } from '../store';
-
+import "./Derecho.css";
 
 export default function() {
 
@@ -17,7 +17,7 @@ export default function() {
     
 
     return (
-        <div className="songbar">
+        <div className="Derecho">
             <h2 className="song-title">{ CancionActual ? CancionActual.title : "no hay cancion seleccionada" }</h2>
             <audio src={CancionActual ? CancionActual.audioURL: ""} autoPlay></audio>
 

@@ -20,8 +20,8 @@ const { songs } = await api.json();
 <Layout>
 	<div class="container">
 		<div style="position: relative;">
-			<div class="Fondo"></div>
-			<div class="biblioteca-contenido">
+		
+			<div class="playlists">
 				<h1>tu biblioteca</h1>
 				<p>tus canciones</p>
 				<p>tus artistas</p>
@@ -36,10 +36,10 @@ const { songs } = await api.json();
 					<p>artista verificado</p>
 					<Icon name="fe:check-verified" />
 				</div>
-				<Centra client:visible />
+				
 			</div>
 
-			<div>
+			<div class="canciones">
 				<!-- tarjeta -->
 				{
 					songs.map((song) => (
@@ -55,39 +55,76 @@ const { songs } = await api.json();
 				}
 			</div>
 		</div>
-		<Derecho client:visible />
-		<div></div>
-	</div>
+		<div class="partDerecha">
+		<Songbar client:visible />
 
-	<Songbar client:visible />
+		</div>
+		
+		
+		
+	</div>
+	
 </Layout>
 <style>
 	.container {
 		display: flex;
 		justify-content: space-between;
 		gap: 24px;
-
+		padding: 56px;
 		
+</style>
+
+<style>
+	.playlists {
+		width: 340px;
+		min-width: 400px;
+		max-width: 500px;
+		height: 1000px;
+		background: rgba(24, 24, 24, 0.95);
+		border-radius: 16px;
+		box-shadow: 0 4px 24px rgba(150, 44, 44, 0.2);
+		padding: 24px 16px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: sticky;
+		top: 24px;
+		height: fit-content;
+		color: #fff;
+		overflow-y: auto;
+		min-height: 1200px;
+	}
+</style>
+
+<style>
+.partDerecha {
+	width: 340px;
+	min-width: 400px;
+	max-width: 500px;
+	height: 1000px;
+	background: rgba(24, 24, 24, 0.95);
+	border-radius: 16px;
+	box-shadow: 0 4px 24px rgba(150, 44, 44, 0.2);
+	padding: 24px 16px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: sticky;
+	top: 24px;
+	height: fit-content;
+	color: #fff;
+	overflow-y: auto;
+	min-height: 1200px;
+}
+</style>
 
 
 
 <style>
-	
-	}
-	.Fondo {
-		background: #2b2b2b;
-		border: 10px solid #2b2b2b;
-		border-radius: 16px;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 380px;
-		min-height: 420px;
-		z-index: 0;
-	}
-	.biblioteca-contenido {
-		position: relative;
-		z-index: 1;
-		padding: 32px 24px 24px 32px;
-	}
+.canciones {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	margin-top: 24px;
+}
 </style>

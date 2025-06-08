@@ -1,0 +1,105 @@
+/* Songbar.css */
+/* Estilo para un panel derecho similar al de Spotify con info del artista */
+
+.right-panel {
+    width: 350px;
+    background: #181818;
+    color: #fff;
+    padding: 24px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #282828;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.artist-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.artist-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 16px;
+    border: 4px solid #282828;
+}
+
+.artist-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.artist-followers {
+    font-size: 1rem;
+    color: #b3b3b3;
+    margin-bottom: 16px;
+}
+
+.artist-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.artist-actions button {
+    background: #1db954;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.artist-actions button:hover {
+    background: #169c46;
+}
+
+.artist-description {
+    font-size: 1rem;
+    color: #b3b3b3;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.artist-top-songs {
+    margin-top: 16px;
+}
+
+.artist-top-songs h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.top-song {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.top-song img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.top-song-title {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.top-song-album {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+}

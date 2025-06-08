@@ -1,36 +1,64 @@
+/*
+    Este componente muestra la barra de la canción actual.
+    Si no hay canción seleccionada, no se muestra nada.
+*/
 import React from 'react';
 import { $cancionActual } from '../store';
+import "./Songbar.css"
 
 
 export default function() {
 
-    const [CancionActual, setCancionActual] = React.useState(null)
+    const [song, setsong] = React.useState(null)
+
+    const audioRef = React.useRef(null)
+    
+    
     React.useEffect(() => {
 
-        $cancionActual.subscribe((estado) => {
-            setCancionActual(estado)
-            console.log("cancion actualizasa", estado)
+        $cancionActual.subscribe(song => {
+            setsong(song)
+            console.log("Canción actualizada", song)
         })
-    },[])
+    }, [])
 
-
-    
+    const handlerClick = () => {
+        if (audioRef.current) {
+            if (audioRef.current.paused) {
+                audioRef.current.play()
+            } else {
+                audioRef.current.pause()
+            }
+        }
+    }
+     
 
     return (
-        <div className="songbar">
-            <h2 className="song-title">{ CancionActual ? CancionActual.title : "no hay cancion seleccionada" }</h2>
-            <audio src={CancionActual ? CancionActual.audioURL: ""} autoPlay></audio>
-            
-           
-            
-
-
-
-            /* <img src="https://via.placeholder.com/150" alt="Song Cover" className="song-image" />
-            
-            <h2 className="artist-name">Artist Name</h2>
-            <p className="album-name">Album Name</p>
-           
-        </div>
+        
+        
+            <div ClassName="Songbar">
+                <div ClassName = "songbar-info">
+                    <div ClassName="songbar-image">
+                        <img src={song ? song.imageUrl : "https://via.placeholder.com/150"} alt="Song Cover" className="song-image" />
+                    </div>
+                    <div ClassName="songbar-details">
+                        <h2 className="song-title">{song ? song.title : "No hay canción seleccionada"}</h2>
+                        <h3 className="artist-name">{song ? song.author : "No hay autor"}</h3>
+                        <p className="album-name">{song ? song.album : "No hay álbum"}</p>
+                    </div>
+                </div>
+                <div ClassName="songbar-controls">
+                    <div ClassName="Songbar-controls-buttons"> 
+                        <audio src={song ? song.audioURL : ""} ref={audioRef} autoPlay></audio>
+                    </div>
+                </div>
+                <div ClassName="songbar-play-pause" onClick={handlerClick}>
+                    <button>play</button>
+                   
+                </div>
+                
+            </div>
+    
+        
     )
 }
