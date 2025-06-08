@@ -5,8 +5,7 @@ import Tarjeta from "../components/Tarjeta.jsx";
 import Layout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 import Derecho from "../components/Derecho.jsx";
-import Centra from "../components/Centra.jsx";
-import { Artists }  from "../data/Artists.jsx"
+
 
 
 
@@ -26,7 +25,7 @@ const { songs } = await api.json();
 		
 			<div class="playlists">
 				<h1>tu biblioteca</h1>
-				<p>tus canciones</p>
+				<p>tus canciones: no tienes fracasado</p>
 				<p>tus artistas</p>
 				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
 				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />

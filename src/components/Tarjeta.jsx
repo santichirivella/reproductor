@@ -1,5 +1,7 @@
+
 import { $cancionActual } from "../store"
 import "./Tarjeta.css"
+import Favorito from "../componets/Favoritos.jsx"
 
 
 
@@ -15,7 +17,7 @@ import "./Tarjeta.css"
                 imageUrl,
                 album,
                 audioURL,
-                
+                id,
             })
         }
 
@@ -35,6 +37,7 @@ import "./Tarjeta.css"
                     <h3>{title}</h3>
                     <p>{author}</p>
                 </div>
+                <Favorito songId = {id} />
                 <button onClick={handleClick}>Play</button>
                 
             </div>
