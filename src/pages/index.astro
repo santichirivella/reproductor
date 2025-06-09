@@ -1,70 +1,24 @@
 ---
-import Playlist from "../components/Playlist.astro";
-import Songbar from "../components/Songbar";
-import Tarjeta from "../components/Tarjeta.jsx";
+// import Playlist from "../components/Playlist.astro";
+// import Songbar from "../components/Songbar";
+// import Tarjeta from "../components/Tarjeta.jsx";
 import Layout from "../layouts/Layout.astro";
-import { Icon } from "astro-icon/components";
+// import { Icon } from "astro-icon/components";
 import SongList from '../components/Songlist.jsx'
-import { $showingFavorites } from '../store.js';
-import FavoritesToggleButton from '../components/FavoritesToggleButton.jsx';
+// import { $showingFavorites } from '../store.js';
+// import FavoritesToggleButton from '../components/FavoritesToggleButton.jsx';
 
 const api = await fetch("https://api.institutoalfa.org/api/songs");
 const   {songs}  = await api.json();
 ---
 
 <Layout>
-	<div class="container">
-		<div style="position: relative;">
-		
-			<div class="playlists">
-				<h1>tu biblioteca</h1>
-				<p>tus canciones: no tienes fracasado</p>
-				<p>tus artistas</p>
-				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
-				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
-				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
-				<FavoritesToggleButton client:visible />
-				
 
-			</div>
-		</div>
-		<div>
-			<div>
-				<div>
-					<p>artista verificado</p>
-					<Icon name="fe:check-verified" />
-				</div>
-				
-			</div>
-
-			<div class="canciones">
-				<!-- tarjeta -->
-				<!-- {
-					songs.map((song) => (
-						<Tarjeta
-							client:visible
-							title={song.title}
-							author={song.author}
-							album={song.album}
-							imageUrl={song.image.url}
-							audioURL={song.audio.url}
-							_id={song._id}
-						/>
-					))
-				} -->
-					<SongList
-						client:visible
-						allSongs={songs}
-					/>
-			</div>
-		</div>
-		<div class="partDerecha">
-		<Songbar client:visible />
-
-		</div>
-		
-		
-		
+	<div class="canciones">
+			<SongList
+				client:visible
+				allSongs={songs}
+			/>
 	</div>
 	
 </Layout>
@@ -74,64 +28,5 @@ const   {songs}  = await api.json();
 		justify-content: space-between;
 		gap: 24px;
 		padding: 56px;
-		
-</style>
-
-<style>
-	.playlists {
-		background: #2b2b2b;
-		color: #2b2b2b;
-	
-		width: 340px;
-		min-width: 400px;
-		max-width: 500px;
-		height: 1000px;
-		background: #fff
-		border-radius: 16px;
-		
-		padding: 24px 16px;
-		display: flex;
-		flex-direction: column;
-		align-items: self-start;
-		position: sticky;
-		top: 24px;
-		height: fit-content;
-		color: #fff
-		overflow-y: auto;
-		min-height: 1200px;
 	}
-</style>
-
-<style>
-.partDerecha {
-	background: #2b2b2b;
-	width: 340px;
-	min-width: 400px;
-	max-width: 500px;
-	height: 1000px;
-	background: #c4c4c4
-	border-radius: 16px;
-	box-shadow: 0 4px 24px rgba(150, 44, 44, 0.2);
-	padding: 24px 16px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	position: sticky;
-	top: 24px;
-	height: fit-content;
-	color: # 000
-	overflow-y: auto;
-	min-height: 1200px;
-}
-</style>
-
-
-
-<style>
-.canciones {
-	display: flex;
-	flex-direction: column;
-	gap: 32px;
-	margin-top: 24px;
-}
 </style>

@@ -1,3 +1,9 @@
+---
+import { Icon } from "astro-icon/components";
+import Playlist from "../components/Playlist.astro";
+import Songbar from "../components/Songbar";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -8,7 +14,31 @@
 		<title>Astro Basics</title>
 	</head>
 	<body>
-		<slot />
+		<div class="container">
+			<div class="playlists">
+				<h1>tu biblioteca</h1>
+				<p>tus canciones: no tienes fracasado</p>
+				<p>tus artistas</p>
+				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
+				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
+				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
+				<!-- <FavoritesToggleButton client:visible /> -->
+				
+
+			</div>
+			<div>
+				<div>
+					<p>artista verificado</p>
+					<Icon name="fe:check-verified" />
+				</div>
+				
+				<slot />
+			</div>
+			<div class="partDerecha">
+				<Songbar client:visible />
+	
+			</div>
+		</div>
 	</body>
 </html>
 
@@ -18,5 +48,59 @@
 		margin: 0;
 		width: 100%;
 		height: 100%;
+	}
+		.playlists {
+		background: #2b2b2b;
+		color: #2b2b2b;
+	
+		width: 340px;
+		min-width: 400px;
+		max-width: 500px;
+		height: 1000px;
+		background: #fff
+		border-radius: 16px;
+		
+		padding: 24px 16px;
+		display: flex;
+		flex-direction: column;
+		align-items: self-start;
+		position: sticky;
+		top: 24px;
+		height: fit-content;
+		color: #fff
+		overflow-y: auto;
+		min-height: 1200px;
+	}
+	.partDerecha {
+	background: #2b2b2b;
+	width: 340px;
+	min-width: 400px;
+	max-width: 500px;
+	height: 1000px;
+	background: #c4c4c4
+	border-radius: 16px;
+	box-shadow: 0 4px 24px rgba(150, 44, 44, 0.2);
+	padding: 24px 16px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: sticky;
+	top: 24px;
+	height: fit-content;
+	color: # 000
+	overflow-y: auto;
+	min-height: 1200px;
+}
+.canciones {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	margin-top: 24px;
+}
+.container {
+		display: flex;
+		justify-content: space-between;
+		gap: 24px;
+		padding: 56px;
 	}
 </style>
