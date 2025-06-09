@@ -1,17 +1,5 @@
+const FavoritesToggleButton = ({ handleClick, showingFavorites}) => {
 
-import React from 'react';
-import { useStore } from '@nanostores/react'; 
-import { $showingFavorites } from '../store.js'; 
-
-const FavoritesToggleButton = () => {
- 
-  const showingFavorites = useStore($showingFavorites);
-
-  const handleClick = () => {
-    
-    $showingFavorites.set(!showingFavorites);
-    console.log("Alternando vista de favoritos a:", !showingFavorites);
-  };
 
   return (
     <button

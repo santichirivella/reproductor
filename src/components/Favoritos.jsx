@@ -1,51 +1,40 @@
 
 import React, { useState, useEffect } from 'react';
+import { $favoritesSongs } from '../store';
 
-const FavoriteButton = ({ songId }) => { 
+const FavoriteButton = ({ song }) => { 
   const [isFavorite, setIsFavorite] = useState(false);
 
-  
   useEffect(() => {
-    try {
-      const favorites = JSON.parse(localStorage.getItem('my_music_favorites') || '[]');
-      
-      setIsFavorite(favorites.includes(songId));
-    } catch (error) {
-      console.error("Error al leer favoritos de localStorage:", error);
-     
+    // Cargar favoritos desde localStorage al iniciar
+    const stored = localStorage.getItem('favoritesSongs');
+    if (stored) {
+      $favoritesSongs.set(JSON.parse(stored));
     }
-  }, [songId]); 
-
-  
-  const handleClick = () => {
-    let favorites = [];
-    try {
-     
-      favorites = JSON.parse(localStorage.getItem('my_music_favorites') || '[]');
-    } catch (error) {
-      console.error("Error al parsear favoritos de localStorage:", error);
-      favorites = []; 
+    const songs = $favoritesSongs.get();
+    if (songs.length > 0 && songs.find(songState => songState._id == song._id)) {
+      setIsFavorite(true);
     }
+    }, [song._id]);
 
+    useEffect(() => {
+    // Guardar favoritos en localStorage cuando cambian
+    const unsub = $favoritesSongs.subscribe(songs => {
+      localStorage.setItem('favoritesSongs', JSON.stringify(songs));
+    });
+    return () => unsub();
+    }, []);
+
+    const handleClick = () => {
+    const songs = $favoritesSongs.get();
     if (isFavorite) {
-     
-      favorites = favorites.filter(id => id !== songId);
+      const filtro = songs.filter(({ _id }) => _id != song._id);
+      $favoritesSongs.set([...filtro]);
     } else {
-      
-      if (!favorites.includes(songId)) {
-        favorites.push(songId);
-      }
+      $favoritesSongs.set([...songs, song]);
     }
-
-    try {
-   
-      localStorage.setItem('my_music_favorites', JSON.stringify(favorites));
-     
-      setIsFavorite(!isFavorite);
-    } catch (error) {
-      console.error("Error al guardar favoritos en localStorage:", error);
-    }
-  };
+    setIsFavorite(state => !state);
+    };
 
   return (
     <button
