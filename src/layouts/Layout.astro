@@ -16,21 +16,15 @@ import Songbar from "../components/Songbar";
 	<body>
 		<div class="container">
 			<div class="playlists">
-				<h1>tu biblioteca</h1>
-				<p>tus canciones: no tienes fracasado</p>
-				<p>tus artistas</p>
-				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
-				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
-				<Playlist titulo="playlist" imageUrl="/albun 2025.webp" />
-				<!-- <FavoritesToggleButton client:visible /> -->
+				<h1>canciones recomendadas</h1>
 				
-
+				
+				
+				
+			
 			</div>
 			<div>
-				<div>
-					<p>artista verificado</p>
-					<Icon name="fe:check-verified" />
-				</div>
+				
 				
 				<slot />
 			</div>
@@ -48,6 +42,7 @@ import Songbar from "../components/Songbar";
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		background-color: #0d0d0d;
 	}
 		.playlists {
 		background: #2b2b2b;
@@ -102,5 +97,8 @@ import Songbar from "../components/Songbar";
 		justify-content: space-between;
 		gap: 24px;
 		padding: 56px;
+	}
+	* {
+		color: #fff !important;
 	}
 </style>
